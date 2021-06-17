@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<view:BasePage  xmlns:view="clr-namespace:Scheduler.View"
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="Scheduler.MainPage"
+                Title="Scheduler">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save Availability"
+                     Order="Secondary"
+                     Clicked="OnSave" />
+        <ToolbarItem Text="Reset Availability"
+                     Order="Secondary"
+                     Clicked="OnReset" />
+        <ToolbarItem Text="Send Data"
+                     Order="Secondary"
+                     Clicked="OnSend" />
+        <ToolbarItem Text="Admin (Requires Password)"
+                     Order="Secondary"
+                     Clicked="OnMasterCommand" />
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="28" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Entry Text="{Binding Name, Mode=TwoWay}"
+               Placeholder="Enter your name here"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="Center"
+               Grid.Row="0"
+               Grid.Column="0"
+               Grid.ColumnSpan="2" />
+
+        <Button Text="Reconnect"
+                Command="{Binding Reconnect}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Grid.Row="0"
+                Grid.Column="2" />
+
+        <Label Text="Date"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               FontAttributes="Bold"
+               Grid.Row="1"
+               Grid.Column="0" />
+        <Label Text="Start Time"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               FontAttributes="Bold"
+               Grid.Row="1"
+               Grid.Column="1" />
+        <Label Text="End Time"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               FontAttributes="Bold"
+               Grid.Row="1"
+               Grid.Column="2" />
+
+        <ListView ItemsSource="{Binding DayList}"
+                  ItemTapped="ListView_ItemTapped"
+                  Grid.Row="2"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height="50">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding DateStr}"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Grid.Column="0" />
+                            <Label Text="{Binding StartTimeStr}"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Grid.Column="1" />
+                            <Label Text="{Binding EndTimeStr}"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Grid.Column="2" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+</view:BasePage>

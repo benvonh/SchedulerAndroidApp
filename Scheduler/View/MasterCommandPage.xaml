@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<view:BasePage  xmlns:view="clr-namespace:Scheduler.View"
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="Scheduler.MasterCommandPage"
+                Title="Master Commands">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="28" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Text="Password:"
+               HorizontalOptions="End"
+               VerticalOptions="Center"
+               Grid.Row="0"
+               Grid.Column="0" />
+
+        <Entry Text="{Binding EntryText, Mode=TwoWay}"
+               IsPassword="True"
+               WidthRequest="120"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="Center"
+               Grid.Row="0"
+               Grid.Column="1" />
+
+        <Label Text="Password incorrect"
+               IsVisible="{Binding MessageLblIsVis}"
+               TextColor="Red"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               Grid.Row="1"
+               Grid.Column="1" />
+
+        <Button Text="Confirm"
+                Command="{Binding OnConfirm}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Grid.Row="0"
+                Grid.Column="2" />
+
+        <Button Text="Reset Data"
+                Command="{Binding OnReset}"
+                IsVisible="{Binding ResetBtnIsVis}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Grid.Row="3"
+                Grid.Column="0" />
+
+        <Button Text="Delete User"
+                Command="{Binding OnDelete}"
+                IsVisible="{Binding DeleteBtnIsVis}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Grid.Row="3"
+                Grid.Column="1" />
+
+        <Button Text="Process"
+                Command="{Binding OnProceed}"
+                IsVisible="{Binding ProceedBtnIsVis}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Grid.Row="3"
+                Grid.Column="2" />
+    </Grid>
+
+</view:BasePage>
